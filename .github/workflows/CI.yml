@@ -58,7 +58,7 @@ jobs:
           cd openwrt-sdk
 
           git clone https://github.com/kuoruan/openwrt-upx.git package/upx
-          git -C package/upx checkout b3a314cf007efdd1b14b578832b3ec3fda49ce69 # upx version: v4.0.2
+          git -C package/upx checkout 2be8811 # upx version: v4.0.2
 
           #cat feeds.conf.default >> feeds.conf
           echo 'src-git packages https://git.openwrt.org/feed/packages.git^c279efb760ca516db7cdaee32216344df47f2203' >> feeds.conf # feeds/packages: OpenWrt v23.05.0-rc2
