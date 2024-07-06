@@ -51,12 +51,9 @@ endef
 
 define Package/netbird/install
 	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
-
-	$(INSTALL_DIR) $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/bin $(1)/etc/init.d
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/client $(1)/usr/bin/netbird
-
-	$(INSTALL_DIR) $(1)/etc/init.d/
-	$(INSTALL_BIN) $(CURDIR)/files/netbird.init $(1)/etc/init.d/netbird
+	$(INSTALL_BIN) ./files/netbird.init $(1)/etc/init.d/netbird
 endef
 
 $(eval $(call GoBinPackage,netbird))
