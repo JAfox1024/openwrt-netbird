@@ -1,24 +1,23 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=netbird
-PKG_VERSION:=0.28.4
+PKG_VERSION:=0.28.9
 PKG_RELEASE:=$(AUTORELEASE)
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/netbirdio/netbird/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=f2133123f364c23ed53a1316e7bf493aa71f36d31838c1ec71b91d863065b667
+PKG_HASH:=c3cc721330cbe8341665e982f8e7c77e0a37f0fedaee07f44fc78b5e200eb1c3
 
 
 PKG_CONFIG_DEPENDS:=CONFIG_NETBIRD_COMPRESS_UPX
 
 PKG_BUILD_DEPENDS:=golang/host upx/host
 PKG_BUILD_PARALLEL:=1
-PKG_USE_MIPS16:=0
+PKG_BUILD_FLAGS:=no-mips16
 
 GO_PKG:=github.com/netbirdio/netbird
-GO_PKG_BUILD_PKG:=github.com/netbirdio/netbird/client
-GO_PKG_LDFLAGS:=-s -w
-GO_PKG_LDFLAGS_X:=github.com/netbirdio/netbird/version.version=$(PKG_VERSION)
+GO_PKG_BUILD_PKG:=$(GO_PKG)/client
+GO_PKG_LDFLAGS_X:=$(GO_PKG)/version.version=$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
