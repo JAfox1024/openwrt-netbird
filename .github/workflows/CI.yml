@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Build - ${{ matrix.target.arch }}
-    runs-on: host-10-192-18-7
+    runs-on: lz
     strategy:
       fail-fast: false
       matrix:
