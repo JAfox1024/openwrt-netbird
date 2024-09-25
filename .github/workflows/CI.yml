@@ -71,12 +71,12 @@ jobs:
           ./scripts/feeds install -d y -f -a
           make package/netbird/compile V=s CONFIG_NETBIRD_COMPRESS_UPX=n
           tree bin/packages/
-      - name: Archive package
-        uses: actions/upload-artifact@v2
-        with:
-          name: netbird-${{ matrix.target.arch }}
-          path: openwrt-sdk/bin/packages/*/netbird/netbird*.ipk
-          if-no-files-found: error
+      # - name: Archive package
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: netbird-${{ matrix.target.arch }}
+      #     path: openwrt-sdk/bin/packages/*/netbird/netbird*.ipk
+      #     if-no-files-found: error
       - name: Upload package to GitHub Release
         uses: svenstaro/upload-release-action@v2
         if: "startsWith(github.ref, 'refs/tags/')"
